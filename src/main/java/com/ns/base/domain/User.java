@@ -13,7 +13,6 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-
 	@Id
     @Column(updatable = false, nullable = false)
     @Size(min = 0, max = 50)
@@ -40,7 +39,7 @@ public class User {
     @ManyToMany
     @JoinTable(
             name = "user_authority",
-            joinColumns = @JoinColumn(name = "username"),
+            joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority"))
     private Set<Authority> authorities;
 

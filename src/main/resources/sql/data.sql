@@ -5,7 +5,7 @@ INSERT INTO user (id,username,email, password, activated) VALUES (3,'rajith', 'r
 INSERT INTO authority (name) VALUES ('ROLE_USER');
 INSERT INTO authority (name) VALUES ('ROLE_ADMIN');
 
-INSERT INTO user_authority (username,authority) VALUES (3, 'ROLE_USER');
-INSERT INTO user_authority (username,authority) VALUES (2, 'ROLE_USER');
-INSERT INTO user_authority (username,authority) VALUES (1, 'ROLE_USER');
-INSERT INTO user_authority (username,authority) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO user_authority (id,authority) VALUES (3, 'ROLE_USER');
+INSERT INTO user_authority (id,authority) VALUES (2, 'ROLE_USER');
+INSERT INTO user_authority (id,authority) VALUES (1, 'ROLE_USER');
+INSERT INTO user_authority (id,authority) VALUES (1, 'ROLE_ADMIN');
