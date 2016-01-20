@@ -1,4 +1,4 @@
-package com.ns.base.base.security;
+package com.ns.base.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ns.base.base.domain.Authority;
-import com.ns.base.base.domain.User;
-import com.ns.base.base.repository.UserRepository;
+import com.ns.base.domain.Authority;
+import com.ns.base.domain.User;
+import com.ns.base.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;

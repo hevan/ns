@@ -1,4 +1,4 @@
-package com.ns.base.base.domain;
+package com.ns.base.domain;
 
 public class Greeting {
 

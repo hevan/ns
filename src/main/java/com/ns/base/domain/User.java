@@ -1,4 +1,4 @@
-package com.ns.base.base.domain;
+package com.ns.base.domain;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -9,7 +9,12 @@ import java.util.Set;
 @Entity
 public class User {
 
-    @Id
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+
+	@Id
     @Column(updatable = false, nullable = false)
     @Size(min = 0, max = 50)
     private String username;
@@ -30,7 +35,8 @@ public class User {
     @Size(min = 0, max = 100)
     @Column(name = "resetpasswordkey")
     private String resetPasswordKey;
-
+    
+    
     @ManyToMany
     @JoinTable(
             name = "user_authority",
@@ -38,6 +44,16 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "authority"))
     private Set<Authority> authorities;
 
+    
+
+    public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
     public String getUsername() {
         return username;
     }
@@ -101,7 +117,7 @@ public class User {
 
         User user = (User) o;
 
-        if (!username.equals(user.username)) return false;
+        if (id!=user.id) return false;
 
         return true;
     }
@@ -114,7 +130,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+        		 "id='" + id + '\'' +
+                ",username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", activated='" + activated + '\'' +

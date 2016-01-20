@@ -1,4 +1,4 @@
-package com.ns.base.base.domain;
+package com.ns.base.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

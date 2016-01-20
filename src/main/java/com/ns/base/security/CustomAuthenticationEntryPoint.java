@@ -1,4 +1,4 @@
-package com.ns.base.base.security;
+package com.ns.base.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,9 +1,9 @@
-package com.ns.base.base.repository;
+package com.ns.base.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.ns.base.base.domain.Authority;
+import com.ns.base.domain.Authority;
 
 public interface AuthorityRepository extends JpaRepository<Authority, String> {
 }

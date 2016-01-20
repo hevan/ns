@@ -1,4 +1,4 @@
-package com.ns.base.base.security;
+package com.ns.base.security;
 
 public enum Authorities {
 

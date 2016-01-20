@@ -20,9 +20,9 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.ns.base.base.security.Authorities;
-import com.ns.base.base.security.CustomAuthenticationEntryPoint;
-import com.ns.base.base.security.CustomLogoutSuccessHandler;
+import com.ns.base.security.Authorities;
+import com.ns.base.security.CustomAuthenticationEntryPoint;
+import com.ns.base.security.CustomLogoutSuccessHandler;
 
 import javax.sql.DataSource;
 
