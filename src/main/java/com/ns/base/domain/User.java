@@ -2,6 +2,7 @@ package com.ns.base.domain;
 
 import org.hibernate.validator.constraints.Email;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -9,11 +10,11 @@ import java.util.Set;
 @Entity
 public class User {
 
-	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Long id;
+	
     @Column(updatable = false, nullable = false)
     @Size(min = 0, max = 50)
     private String username;
@@ -45,11 +46,11 @@ public class User {
 
     
 
-    public long getId() {
+    public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
