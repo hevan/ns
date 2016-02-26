@@ -15,7 +15,7 @@ CREATE TABLE `ClientDetails` (
   `refresh_token_validity` int(11) DEFAULT NULL,
   `additionalInformation` blob,
   `autoApproveScopes` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`appId`)
+   KEY (`appId`(256))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `oauth_access_token` (
@@ -53,7 +53,7 @@ CREATE TABLE `oauth_client_details` (
   `archived` tinyint(1) DEFAULT '0',
   `trusted` tinyint(1) DEFAULT '0',
   `autoapprove` varchar(256) DEFAULT 'false',
-  PRIMARY KEY (`client_id`)
+   KEY (`client_id`(256))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `oauth_code` (
