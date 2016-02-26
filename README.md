@@ -1,5 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/rajithd/spring-boot-oauth2.png)](http://travis-ci.org/rajithd/spring-boot-oauth2)
 
+
+https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/data.sql
+
 # Build and Run
 ```java
 mvn clean install -DskipTests spring-boot:run
