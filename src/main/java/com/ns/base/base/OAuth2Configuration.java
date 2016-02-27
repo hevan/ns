@@ -98,7 +98,7 @@ public class OAuth2Configuration {
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients
-                    .inMemory()
+                    .jdbc(dataSource)
                     .withClient(propertyResolver.getProperty(PROP_CLIENTID))
                     .scopes("read", "write")
                     .authorities(Authorities.ROLE_ADMIN.name(), Authorities.ROLE_USER.name())
