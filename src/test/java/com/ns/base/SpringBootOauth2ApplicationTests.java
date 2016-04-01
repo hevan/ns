@@ -15,5 +15,6 @@ public class SpringBootOauth2ApplicationTests {
 	public void contextLoads() {
 	}
 
+  client:
 }
 */

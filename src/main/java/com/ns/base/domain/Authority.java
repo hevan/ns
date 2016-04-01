@@ -5,8 +5,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class Authority {
+public class Authority implements GrantedAuthority{
 
     @Id
     @NotNull
@@ -44,5 +46,11 @@ public class Authority {
                 "name='" + name + '\'' +
                 '}';
     }
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return name;
+	}
 
 }

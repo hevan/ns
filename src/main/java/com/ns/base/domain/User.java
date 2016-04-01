@@ -5,10 +5,12 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +27,8 @@ public class User {
     @Email
     @Size(min = 0, max = 50)
     private String email;
+    
+    private String mobile;
 
     private boolean activated;
 
@@ -36,6 +40,7 @@ public class User {
     @Column(name = "resetpasswordkey")
     private String resetPasswordKey;
     
+    private Long salt;
     
     @ManyToMany
     @JoinTable(
@@ -43,10 +48,19 @@ public class User {
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority"))
     private Set<Authority> authorities;
-
     
+    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="user")
+    private UserAccount userAccount;
 
-    public Long getId() {
+    public UserAccount getUserAccount() {
+		return userAccount;
+	}
+
+	public void setUserAccount(UserAccount userAccount) {
+		this.userAccount = userAccount;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -140,4 +154,20 @@ public class User {
                 ", authorities=" + authorities +
                 '}';
     }
+
+	public Long getSalt() {
+		return salt;
+	}
+
+	public void setSalt(Long salt) {
+		this.salt = salt;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 }

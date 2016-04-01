@@ -1,249 +1,182 @@
 package com.ns.base.domain;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import com.ns.base.util.DateUtils;
+import javax.persistence.*;
+import java.sql.Timestamp;
 
 
 /**
- * @author Shengzhao Li
+ * The persistent class for the oauth_client_details database table.
+ * 
  */
-
 @Entity
 @Table(name="oauth_client_details")
 public class OauthClientDetails implements Serializable {
+	private static final long serialVersionUID = 1L;
 
+	@Column(name="access_token_validity")
+	private int accessTokenValidity;
 
-    private static final long serialVersionUID = -6947822646185526939L;
+	@Lob
+	@Column(name="additional_information")
+	private String additionalInformation;
 
-   
-    @Id
-    @Column(name="client_id")
-    private String clientId;
-    
-    @Column(name="resources_ids")
-    private String resourceIds;
-    
+	private byte archived;
 
-    @Column(name="client_secret")
-    private String clientSecret;
-    /**
-     * Available values: read,write
-     */
-    private String scope;
+	private String authorities;
 
-    /**
-     * grant types include
-     * "authorization_code", "password", "assertion", and "refresh_token".
-     * Default value is "authorization_code,refresh_token".
-     */
-    @Column(name="authorized_grant_types")
-    private String authorizedGrantTypes = "authorization_code,refresh_token";
+	@Column(name="authorized_grant_types")
+	private String authorizedGrantTypes;
 
-    /**
-     * The re-direct URI(s) established during registration (optional, comma separated).
-     */
-    @Column(name="web_server_redirect_uri")
-    private String webServerRedirectUri;
+	private String autoapprove;
 
-    /**
-     * Authorities that are granted to the client (comma-separated). Distinct from the authorities
-     * granted to the user on behalf of whom the client is acting.
-     * <p/>
-     * For example: ROLE_USER
-     */
-    @Column(name="authorities")
-    private String authorities;
+	@Id
+	@Column(name="client_id")
+	private String clientId;
 
-    /**
-     * The access token validity period in seconds (optional).
-     * If unspecified a global default will be applied by the token services.
-     */
-    @Column(name="access_token_validity")
-    private Integer accessTokenValidity;
+	@Column(name="client_secret")
+	private String clientSecret;
 
-    /**
-     * The refresh token validity period in seconds (optional).
-     * If unspecified a global default will  be applied by the token services.
-     */
-    @Column(name="refresh_token_validity")
-    private Integer refreshTokenValidity;
+	@Column(name="create_time")
+	private Timestamp createTime;
 
-    // optional
-    @Column(name="additional_information")
-    private String additionalInformation;
+	@Column(name="refresh_token_validity")
+	private int refreshTokenValidity;
 
-    /**
-     * The client is trusted or not. If it is trust, will skip approve step
-     * default false.
-     */
-    private boolean trusted = false;
+	@Column(name="resource_ids")
+	private String resourceIds;
 
-    @Column(name="create_time")
-    private LocalDateTime createTime = DateUtils.now();
-    
-    private boolean archived = false;
+	@Column(name="resources_ids")
+	private String resourcesIds;
 
-    /**
-     * Value is 'true' or 'false',  default 'false'
-     */
-    @Column(name="autoapprove")
-    private String autoApprove;
+	private String scope;
 
-    public OauthClientDetails() {
-    }
+	private byte trusted;
 
-    public String autoApprove() {
-        return autoApprove;
-    }
+	@Column(name="web_server_redirect_uri")
+	private String webServerRedirectUri;
 
-    public OauthClientDetails autoApprove(String autoApprove) {
-        this.autoApprove = autoApprove;
-        return this;
-    }
+	public OauthClientDetails() {
+	}
 
-    public boolean trusted() {
-        return trusted;
-    }
+	public int getAccessTokenValidity() {
+		return this.accessTokenValidity;
+	}
 
-    public LocalDateTime createTime() {
-        return createTime;
-    }
+	public void setAccessTokenValidity(int accessTokenValidity) {
+		this.accessTokenValidity = accessTokenValidity;
+	}
 
-    public OauthClientDetails createTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-        return this;
-    }
+	public String getAdditionalInformation() {
+		return this.additionalInformation;
+	}
 
-    public boolean archived() {
-        return archived;
-    }
+	public void setAdditionalInformation(String additionalInformation) {
+		this.additionalInformation = additionalInformation;
+	}
 
-    public String clientId() {
-        return clientId;
-    }
+	public byte getArchived() {
+		return this.archived;
+	}
 
-    public String resourceIds() {
-        return resourceIds;
-    }
+	public void setArchived(byte archived) {
+		this.archived = archived;
+	}
 
-    public String clientSecret() {
-        return clientSecret;
-    }
+	public String getAuthorities() {
+		return this.authorities;
+	}
 
-    public String scope() {
-        return scope;
-    }
+	public void setAuthorities(String authorities) {
+		this.authorities = authorities;
+	}
 
-    public String authorizedGrantTypes() {
-        return authorizedGrantTypes;
-    }
+	public String getAuthorizedGrantTypes() {
+		return this.authorizedGrantTypes;
+	}
 
-    public String webServerRedirectUri() {
-        return webServerRedirectUri;
-    }
+	public void setAuthorizedGrantTypes(String authorizedGrantTypes) {
+		this.authorizedGrantTypes = authorizedGrantTypes;
+	}
 
-    public String authorities() {
-        return authorities;
-    }
+	public String getAutoapprove() {
+		return this.autoapprove;
+	}
 
-    public Integer accessTokenValidity() {
-        return accessTokenValidity;
-    }
+	public void setAutoapprove(String autoapprove) {
+		this.autoapprove = autoapprove;
+	}
 
-    public Integer refreshTokenValidity() {
-        return refreshTokenValidity;
-    }
+	public String getClientId() {
+		return this.clientId;
+	}
 
-    public String additionalInformation() {
-        return additionalInformation;
-    }
+	public void setClientId(String clientId) {
+		this.clientId = clientId;
+	}
 
+	public String getClientSecret() {
+		return this.clientSecret;
+	}
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("OauthClientDetails");
-        sb.append("{createTime=").append(createTime);
-        sb.append(", archived=").append(archived);
-        sb.append(", clientId='").append(clientId).append('\'');
-        sb.append(", resourceIds='").append(resourceIds).append('\'');
-        sb.append(", clientSecret='").append(clientSecret).append('\'');
-        sb.append(", scope='").append(scope).append('\'');
-        sb.append(", authorizedGrantTypes='").append(authorizedGrantTypes).append('\'');
-        sb.append(", webServerRedirectUri='").append(webServerRedirectUri).append('\'');
-        sb.append(", authorities='").append(authorities).append('\'');
-        sb.append(", accessTokenValidity=").append(accessTokenValidity);
-        sb.append(", refreshTokenValidity=").append(refreshTokenValidity);
-        sb.append(", additionalInformation='").append(additionalInformation).append('\'');
-        sb.append(", trusted=").append(trusted);
-        sb.append('}');
-        return sb.toString();
-    }
+	public void setClientSecret(String clientSecret) {
+		this.clientSecret = clientSecret;
+	}
 
-    public OauthClientDetails clientId(String clientId) {
-        this.clientId = clientId;
-        return this;
-    }
+	public Timestamp getCreateTime() {
+		return this.createTime;
+	}
 
-    public OauthClientDetails clientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
-        return this;
-    }
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
 
-    public OauthClientDetails resourceIds(String resourceIds) {
-        this.resourceIds = resourceIds;
-        return this;
-    }
+	public int getRefreshTokenValidity() {
+		return this.refreshTokenValidity;
+	}
 
-    public OauthClientDetails authorizedGrantTypes(String authorizedGrantTypes) {
-        this.authorizedGrantTypes = authorizedGrantTypes;
-        return this;
-    }
+	public void setRefreshTokenValidity(int refreshTokenValidity) {
+		this.refreshTokenValidity = refreshTokenValidity;
+	}
 
-    public OauthClientDetails scope(String scope) {
-        this.scope = scope;
-        return this;
-    }
+	public String getResourceIds() {
+		return this.resourceIds;
+	}
 
-    public OauthClientDetails webServerRedirectUri(String webServerRedirectUri) {
-        this.webServerRedirectUri = webServerRedirectUri;
-        return this;
-    }
+	public void setResourceIds(String resourceIds) {
+		this.resourceIds = resourceIds;
+	}
 
-    public OauthClientDetails authorities(String authorities) {
-        this.authorities = authorities;
-        return this;
-    }
+	public String getResourcesIds() {
+		return this.resourcesIds;
+	}
 
-    public OauthClientDetails accessTokenValidity(Integer accessTokenValidity) {
-        this.accessTokenValidity = accessTokenValidity;
-        return this;
-    }
+	public void setResourcesIds(String resourcesIds) {
+		this.resourcesIds = resourcesIds;
+	}
 
-    public OauthClientDetails refreshTokenValidity(Integer refreshTokenValidity) {
-        this.refreshTokenValidity = refreshTokenValidity;
-        return this;
-    }
+	public String getScope() {
+		return this.scope;
+	}
 
-    public OauthClientDetails trusted(boolean trusted) {
-        this.trusted = trusted;
-        return this;
-    }
+	public void setScope(String scope) {
+		this.scope = scope;
+	}
 
-    public OauthClientDetails additionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
-        return this;
-    }
+	public byte getTrusted() {
+		return this.trusted;
+	}
 
-    public OauthClientDetails archived(boolean archived) {
-        this.archived = archived;
-        return this;
-    }
+	public void setTrusted(byte trusted) {
+		this.trusted = trusted;
+	}
+
+	public String getWebServerRedirectUri() {
+		return this.webServerRedirectUri;
+	}
+
+	public void setWebServerRedirectUri(String webServerRedirectUri) {
+		this.webServerRedirectUri = webServerRedirectUri;
+	}
+
 }
