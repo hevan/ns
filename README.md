@@ -39,4 +39,6 @@ https://github.com/gdongus/spring-boot-oauth-jwt-example
 
 https://github.com/nandhusriram/jwt_token_mongo_store
 
+https://github.com/tuanngda/spring-boot-oauth2-demo
+
 
