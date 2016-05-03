@@ -1,13 +1,23 @@
 package com.ns.base.domain;
 
-import org.hibernate.validator.constraints.Email;
-
-
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-
 import java.io.Serializable;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class User implements Serializable{
@@ -29,6 +39,9 @@ public class User implements Serializable{
     private String email;
     
     private String mobile;
+    
+    @Transient
+	private String verifyCode;
 
     private boolean activated;
 
@@ -169,5 +182,13 @@ public class User implements Serializable{
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+
+	public String getVerifyCode() {
+		return verifyCode;
+	}
+
+	public void setVerifyCode(String verifyCode) {
+		this.verifyCode = verifyCode;
 	}
 }

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class UserAccount implements Serializable{
@@ -26,7 +27,7 @@ public class UserAccount implements Serializable{
 	@Column(name = "id")
 	private Long id;
 
-	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
+	@OneToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH }, optional = false)
 	@JoinColumn(name = "user_id")
 	private User user;
 	

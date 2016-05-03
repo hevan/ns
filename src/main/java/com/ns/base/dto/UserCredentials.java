@@ -10,6 +10,7 @@ import com.ns.base.domain.User;
 
 public class UserCredentials implements UserDetails {
 
+	
 	/**
 	 * 
 	 */
@@ -27,6 +28,7 @@ public class UserCredentials implements UserDetails {
 	private Long salt;
 	
 
+	
 	private Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
 	
 	private boolean accountNonExpired = true;

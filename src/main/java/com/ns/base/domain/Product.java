@@ -45,6 +45,7 @@ public class Product implements Serializable{
 	//销售价格
 	private BigDecimal sellPrice;
 	
+	
 	private String otherInfo;
 
 	public Long getId() {

@@ -7,6 +7,7 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,15 +34,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
     
-    @Autowired
-    private Md5PasswordEncoder md5PasswordEncoder;
-    
-    @Autowired
-    private  SecureRandom secureRandom;
-
+   
     @Override
     @Transactional
-    public UserCredentials loadUserByUsername(final String login) {
+    public UserDetails loadUserByUsername(final String login) {
 
         log.debug("Authenticating {}", login);
         String lowercaseLogin = login.toLowerCase();
@@ -71,26 +67,12 @@ public class CustomUserDetailsService implements UserDetailsService {
       //return new org.springframework.security.core.userdetails.User(userFromDatabase.getUsername(), userFromDatabase.getPassword(), grantedAuthorities);
     }
     
-    
-    public boolean createUser(User userCreate) {
-        Object salt = secureRandom.nextLong();
-        String endcodedPassword = md5PasswordEncoder.encodePassword(userCreate.getPassword(), salt);
-        
-        userCreate.setSalt((Long)salt);
-        userCreate.setPassword(endcodedPassword);
-        
-        userRepository.save(userCreate);
-        
-        return true;
-    }
+   
     
     
-    public static void main(String args[])
-    {
-    	Md5PasswordEncoder md5PasswordEncoder = new Md5PasswordEncoder();
-    	String endcodedPassword = md5PasswordEncoder.encodePassword("123456", 100);
-    	
-    	System.out.print(endcodedPassword);
-        
-    }
+
+
+	public User findByUsername(String username) {
+		return userRepository.findByUsernameCaseInsensitive(username);
+	}
 }

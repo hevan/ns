@@ -10,10 +10,20 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 public class Authority implements GrantedAuthority{
 
-    @Id
+	public Authority() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @NotNull
     @Size(min = 0, max = 50)
-    private String name;
+    private String name = "";
 
     public String getName() {
         return name;
@@ -23,6 +33,12 @@ public class Authority implements GrantedAuthority{
         this.name = name;
     }
 
+	
+	 public Authority(String name) {
+			super();
+			this.name = name;
+		}
+	
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
